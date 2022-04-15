@@ -56,6 +56,9 @@ for mode in range(3):
 ## References
 
 [1] Okamoto, K. (2021). Fundamentals of optical waveguides. Elsevier.
+
 [2] GHATAK, A. A., Ghatak, A., Thyagarajan, K., & Thyagarajan, K. (1998). An introduction to fiber optics. Cambridge university press.
+
 [3] Orfanidis, S. J. (2002). Electromagnetic waves and antennas.
+
 [4] Paschotta, D., 2022. LP Modes. [online] Rp-photonics.com. Available at: <https://www.rp-photonics.com/lp_modes.html> [Accessed 15 April 2022].

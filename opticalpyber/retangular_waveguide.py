@@ -148,7 +148,3 @@ class RetangularWaveguide(Waveguide):
         return n_e
 
 
-##############
-a = RetangularWaveguide(3.50125,3.5,3,2*8e-6,3e-6,1e-6,6.5e-6)
-all_modes = a.calculateNeff(1.32e-6)
-print(a.neff)

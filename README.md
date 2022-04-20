@@ -1,29 +1,81 @@
-# Optical Pyber
+<h1 align="center">
+    <img alt="OpticalPyber" ttle="OpticalPyber" src="https://github.com/marcos-moura97/opticalpyber/blob/main/docs/logo.png" width="30%" height="auto"/>
+</h1>
+
+<p align="center">
+  <a href="#about-the-project">About the Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#requirements">Requirements</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#examples">Examples</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#next-steps">Next Steps</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#references">References</a>
+</p>
+
+<br />
+
+## About the Project
 
 Package with tools to analize waveguides and optical fibers. This package uses numerical methods to find the eigenvalues related to the propagation modes and other characteristics of the waveguide. Currently, this package supports three types of waveguide: Planar, Retangular and Optical Fibers.
+
+This package is made based on python codes used during my graduation, this codes can be found in [this repository](https://github.com/marcos-moura97/eletromagnetism_python.git).
 
 ## Requirements
 - numpy
 - scipy
 - matplotlib (if you want to plot something)
 
-
 ## Examples
 
 ### Planar Waveguide
 
-(todo)
+- Find the effective index and plot the profile dispersion curve for modes TM0, TM1 and TM2 in an symetric guide [1-2].
+```
+from opticalpyber import PlanarWaveguide
+import matplotlib.pyplot as plt
+
+# materials
+n1 = 3.38       #core
+n2 = 3          #cladding
+n3 = n2         #substrate
+
+d = 2.5E-6      #core length
+lbd = 1E-6      # wavelength
+
+guide = PlanarWaveguide(n1, n2, n3, d)
+
+for mode in range(3):
+    Ey = guide.calculateDispersionField(lbd, mode="TM", mode_number=mode)
+
+    # make the x arrays
+    x = np.arange(-2*guide.lbd,2*guide.lbd,guide.dx)
+
+    # ploting
+    plt.figure(mode)
+    plt.plot(x,Ey[:-1],'b')
+    # plot the bars that divide the materials
+    plt.plot([-guide.a,-guide.a],[-guide.amplitude,guide.amplitude],'k--') # substracte / core
+    plt.plot([guide.a,guide.a],[-guide.amplitude,guide.amplitude],'k--')   # core / cladding
+    # some info
+    plt.title(f'Dispersion of Ey for mode TM{mode}')
+    plt.xlabel('y')
+    plt.ylabel('Ey')
+    plt.xticks([-guide.a,guide.a], ['-a','a'])
+    plt.show()
+
+```
 
 ### Retangular Waveguide
 
-(todo)
+- Find the effective index and plot the profile dispersion curve for modes TM0 in an symetric rib waveguide[1].
+
+```
+(to do)
+```
 
 ### Optical Fiber
 
 - Find and plot the modes LP01, LP11 and LP21 of an Step-index fiber[4].
 
 ```
-""" Find and plot LP Modes of an Optical Fiber """
 from opticalpyber import OpticalFiber
 import matplotlib.pyplot as plt
 
@@ -45,13 +97,19 @@ for mode in range(3):
     print(modes)
 
     # plot the modes
-    (x, y, z) = a.calculateDispersionField(modes[-1], dx=1e-8)
+    (x, y, z) = fiber.calculateDispersionField(modes[-1], dx=1e-8)
 
-    figure(i)
+    plt.figure(mode)
     plt.contourf(x, y, z)
     plt.colorbar()
     plt.show()
 ```
+
+## Next Steps
+
+- Unit Tests
+- Add Slot Waveguides
+- More Robust Optical Fiber Model
 
 ## References
 

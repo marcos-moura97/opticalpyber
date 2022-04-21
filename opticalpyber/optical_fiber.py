@@ -32,8 +32,8 @@ import math
 
 from scipy.special import jv
 
-from utils.constants import PI
-from waveguide import Waveguide
+from opticalpyber.utils.constants import PI
+from opticalpyber.waveguide import Waveguide
 
 class OpticalFiber(Waveguide):
     def __init__(self, n1: float, n2: float, d: float):

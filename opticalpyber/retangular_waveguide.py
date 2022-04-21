@@ -29,10 +29,10 @@ References:
 import numpy as np
 import math
 
-from utils.bisection_method import Bisection
-from utils.constants import PI, C_0, MU_0, EPSILON_0
+from opticalpyber.utils.bisection_method import Bisection
+from opticalpyber.utils.constants import PI, C_0, MU_0, EPSILON_0
 
-from waveguide import Waveguide
+from opticalpyber.waveguide import Waveguide
 
 
 class RetangularWaveguide(Waveguide):

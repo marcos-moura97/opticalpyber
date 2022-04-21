@@ -23,10 +23,10 @@ References:
 import numpy as np
 import math
 
-from utils.bisection_method import Bisection
-from utils.constants import PI
+from opticalpyber.utils.bisection_method import Bisection
+from opticalpyber.utils.constants import PI
 
-from waveguide import Waveguide
+from opticalpyber.waveguide import Waveguide
 
 class PlanarWaveguide(Waveguide):
     def __init__(self, n1: float, n2: float, n3: float, d: float):

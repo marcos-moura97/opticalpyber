@@ -68,7 +68,46 @@ for mode in range(3):
 - Find the effective index and plot the profile dispersion curve for modes TM0 in an symetric rib waveguide[1].
 
 ```
-(to do)
+import matplotlib.pyplot as plt
+
+## materials
+
+n1 = 3.50125  # core
+n2 = 3.5  # substrate/rib
+n3 = 3  # cladding
+
+d = 2 * 8e-6  # core length
+
+h = 3e-6  # rib bigger height
+t = 1e-6  # rib smaller height, if =0, than is a ridge waveguide
+hc = 6.5e-6  # core height
+
+lbd = 1.32e-6  # wavelength
+
+guide = RetangularWaveguide(n1, n2, n3, d, h, t, hc)
+all_modes = guide.calculateNeff(lbd)
+print(guide.neff)
+
+(XX, YY, Zx) = guide.calculateDispersionFieldX()
+
+# Ploting
+plt.figure()
+# plot
+plt.contourf(XX, YY, Zx)
+# structure plot
+plt.plot([-(3*guide.a), -guide.a, -guide.a, guide.a, guide.a, 3*guide.a],
+         [guide.hc+guide.t, guide.hc+guide.t, guide.hc+guide.h, guide.hc+guide.h, guide.hc+guide.t, guide.hc+guide.t], 'k')
+plt.plot([-(3*guide.a), 3*guide.a], [guide.hc, guide.hc], 'k')
+plt.plot([-(3*guide.a), 3*guide.a], [0, 0], 'k')
+# labels
+plt.xticks([-guide.a,guide.a], ['-a','a'])
+plt.yticks([0,guide.hc,guide.hc+guide.t, guide.hc+guide.h], ['0','hc','hc+t','hc+h'])
+# limits
+plt.xlim([-(3*guide.a), 3*guide.a])
+plt.ylim([-guide.t, guide.hc+guide.h+guide.t])
+
+plt.show()
+
 ```
 
 ### Optical Fiber

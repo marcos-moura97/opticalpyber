@@ -68,6 +68,7 @@ for mode in range(3):
 - Find the effective index and plot the profile dispersion curve for modes TM0 in an symetric rib waveguide[1].
 
 ```
+from opticalpyber import RetangularWaveguide
 import matplotlib.pyplot as plt
 
 ## materials

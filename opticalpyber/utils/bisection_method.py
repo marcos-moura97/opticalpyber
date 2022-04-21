@@ -5,15 +5,17 @@ Bisection Method to Calculate EigenValue
 """
 from typing import Callable
 
+import numpy as np
+
 
 class Bisection:
     def __init__(self,divsn: float = .01, eps: float = 1E-6, mode: int = 0, top_value: float = 1, bottom_value: float = 0):
         self.divsn = divsn
         self.eps = eps
 
-        self.b0 = top_value-self.eps # initial guess
-        self.b1 = self.b0
-        self.b2 = self.b1-self.divsn
+        self.b0: np.complex128 = np.complex128(top_value-self.eps) # initial guess
+        self.b1: np.complex128 = self.b0
+        self.b2: np.complex128 = self.b1-self.divsn
         self.bottom_value = bottom_value
 
         self.mode = mode

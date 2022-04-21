@@ -97,13 +97,13 @@ class PlanarWaveguide(Waveguide):
         self.beta = self.neff*self.k0
 
     # get dispersion field
-    def calculateDispersionField(self, lbd: float, amplitude: float=1.0, phi: float=0, dx: float=1E-8)->np.array:
+    def calculateDispersionField(self, lbd: float, mode: str = "TE", mode_number: int = 0, amplitude: float=1.0, phi: float=0, dx: float=1E-8)->np.array:
         self.lbd = lbd
         self.amplitude = amplitude
         self.phi = phi
         self.dx = dx
 
-        self.calculateNeff()
+        self.calculateNeff(mode=mode, mode_number=mode_number)
 
         Ey1 = self.getDispersionSubstrate()
         Ey2 = self.getDispersionCore()
